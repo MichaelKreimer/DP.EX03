@@ -22,7 +22,6 @@ namespace C16_Ex03_Michael_305597478_Shai_300518495
         private readonly object m_lockList = new object();
         private readonly object m_lockText = new object();
         private List<Task> m_TasksToRemove = new List<Task>();
-        private TaskInvoker m_TaskInvoker = new TaskInvoker();
         private bool m_IsInShown;
 
         public FormFacebookConditionally(ITaskFactory i_TaskFactory)

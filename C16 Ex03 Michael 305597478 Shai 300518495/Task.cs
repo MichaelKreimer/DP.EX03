@@ -7,7 +7,6 @@ namespace C16_Ex03_Michael_305597478_Shai_300518495
 {
     public abstract class Task : ICommand
     {
-        TaskInvoker taskInvoker = new TaskInvoker();
         public bool Execute()
         { 
             bool IsSatisfied = IsConditionSatisfied();
