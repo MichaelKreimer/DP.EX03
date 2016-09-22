@@ -9,22 +9,28 @@ namespace C16_Ex03_Michael_305597478_Shai_300518495
     public class Poster : Task
     {
         private const int k_LengthOfString = 25;
-        private Action<string> m_PosterInvoker;
+        private Services.ActionReturnStatus<string> m_PosterInvoker;
+        private Action<Status> m_PosterUnInvoker;
+        private Status m_StatusPosted;
         private Schedulable m_Schedule;
         private string m_TextToPost;
 
-        public Poster(Action<string> i_PosterInvoker, DateTime i_ChosenDateTime, string i_TextToPost)
+        public Poster(Services.ActionReturnStatus<string> i_PostPoster,Action<Status> i_PosterRemover, DateTime i_ChosenDateTime, string i_TextToPost)
         {
-            m_PosterInvoker = i_PosterInvoker;
+            m_PosterUnInvoker = i_PosterRemover;
+            m_PosterInvoker = i_PostPoster;
             m_Schedule = new Schedulable(i_ChosenDateTime);
             m_TextToPost = i_TextToPost;
         }
 
         protected override void InvokeAction()
         {
-            m_PosterInvoker.Invoke(m_TextToPost);
+            m_StatusPosted = m_PosterInvoker.Invoke(m_TextToPost);
         }
-
+        protected override void InvokeReverseAction()
+        {
+            m_PosterUnInvoker.Invoke(m_StatusPosted);
+        }
         protected override bool IsConditionSatisfied()
         {
             return m_Schedule.isTimeArrived();

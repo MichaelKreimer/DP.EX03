@@ -17,9 +17,14 @@ namespace C16_Ex03_Michael_305597478_Shai_300518495
 
             return IsSatisfied;
         }
+        public void UnExecute()
+        {
+            InvokeReverseAction();
+        }
 
         protected abstract bool IsConditionSatisfied();
 
         protected abstract void InvokeAction();
+        protected abstract void InvokeReverseAction();
     }
 }

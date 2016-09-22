@@ -30,5 +30,16 @@ namespace C16_Ex03_Michael_305597478_Shai_300518495
                 this.HandledPost.Unlike();
             }
         }
+        protected override void InvokeReverseAction()
+        {
+            if (this.IsUnlike == true)
+            {
+                this.HandledPost.Like();
+            }
+            else
+            {
+                this.HandledPost.Unlike();
+            }
+        }
     }
 }

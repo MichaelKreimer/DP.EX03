@@ -12,8 +12,9 @@ namespace C16_Ex03_Michael_305597478_Shai_300518495
         public string CommentText { get; set; }
 
         public Post HandledPost { get; set; }
+        public Comment CommentPosted { get; set; }
 
-        public Commenter(string i_CommentText, Post i_HandledPost)
+        public Commenter(string i_CommentText, ref Post i_HandledPost)
         {
             this.CommentText = i_CommentText;
             this.HandledPost = i_HandledPost;
@@ -21,7 +22,11 @@ namespace C16_Ex03_Michael_305597478_Shai_300518495
 
         protected override void InvokeAction()
         {
-            this.HandledPost.Comment(CommentText);
+            CommentPosted = this.HandledPost.Comment(CommentText);
+        }
+        protected override void InvokeReverseAction()
+        {
+            HandledPost.Comments.Remove(CommentPosted);
         }
     }
 }

@@ -18,19 +18,19 @@ namespace C16_Ex03_Michael_305597478_Shai_300518495
             return new LikerByTime(i_IsUnlike, i_HandledPost, i_ChosenDateTime);
         }
 
-        public CommenterByNums CreateCommenterByNums(string i_CommentText, Post i_HandledPost, int i_NumOfRequiredLikes, int i_NumOfRequiredComments, bool i_IsAndOperation)
+        public CommenterByNums CreateCommenterByNums(string i_CommentText, ref Post i_HandledPost, int i_NumOfRequiredLikes, int i_NumOfRequiredComments, bool i_IsAndOperation)
         {
-            return new CommenterByNums(i_CommentText, i_HandledPost, i_NumOfRequiredLikes, i_NumOfRequiredComments, i_IsAndOperation);
+            return new CommenterByNums(i_CommentText, ref i_HandledPost, i_NumOfRequiredLikes, i_NumOfRequiredComments, i_IsAndOperation);
         }
 
-        public CommenterByTime CreateCommenterByTime(string i_CommentText, Post i_HandledPost, DateTime i_ChosenDateTime)
+        public CommenterByTime CreateCommenterByTime(string i_CommentText, ref Post i_HandledPost, DateTime i_ChosenDateTime)
         {
             return new CommenterByTime(i_CommentText, i_HandledPost, i_ChosenDateTime);
         }
 
-        public Poster CreatePoster(Action<string> i_PosterInvoker, DateTime i_ChosenDateTime, string i_TextToPost)
+        public Poster CreatePoster(Services.ActionReturnStatus<string> i_PosterInvoker,Action<Status> i_StatusRemover, DateTime i_ChosenDateTime, string i_TextToPost)
         {
-            return new Poster(i_PosterInvoker, i_ChosenDateTime, i_TextToPost);
+            return new Poster(i_PosterInvoker, i_StatusRemover, i_ChosenDateTime, i_TextToPost);
         }
     }
 }

@@ -14,7 +14,7 @@ namespace C16_Ex03_Michael_305597478_Shai_300518495
         private int m_NumOfRequiredComments;
         private bool m_IsAndOperation;
 
-        public CommenterByNums(string i_CommentText, Post i_HandledPost, int i_NumOfRequiredLikes, int i_NumOfRequiredComments, bool i_IsAndOperation) : base(i_CommentText, i_HandledPost)
+        public CommenterByNums(string i_CommentText, ref Post i_HandledPost, int i_NumOfRequiredLikes, int i_NumOfRequiredComments, bool i_IsAndOperation) : base(i_CommentText, ref i_HandledPost)
         {
             m_NumOfRequiredLikes = i_NumOfRequiredLikes;
             m_NumOfRequiredComments = i_NumOfRequiredComments;

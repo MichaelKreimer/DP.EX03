@@ -11,7 +11,7 @@ namespace C16_Ex03_Michael_305597478_Shai_300518495
     {
         private Schedulable m_Schedule;
 
-        public CommenterByTime(string i_CommentText, Post i_HandledPost, DateTime i_ChosenDateTime) : base(i_CommentText, i_HandledPost)
+        public CommenterByTime(string i_CommentText, Post i_HandledPost, DateTime i_ChosenDateTime) : base(i_CommentText, ref i_HandledPost)
         {
             m_Schedule = new Schedulable(i_ChosenDateTime);
         }

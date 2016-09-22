@@ -122,9 +122,14 @@ namespace C16_Ex03_Michael_305597478_Shai_300518495
             }
         }
 
-        private void postStatusWithoutReturnParameter(string m_TextToPost)
+        private Status postStatusAdapter(string m_TextToPost)
         {
-            LoginForm.s_LoggedInUser.PostStatus(m_TextToPost);
+            return LoginForm.s_LoggedInUser.PostStatus(m_TextToPost);
+
+        }
+        private void removeStatusWithoutReturnParameter(Status i_StatusToRemove)
+        {
+            LoginForm.s_LoggedInUser.Statuses.Remove(i_StatusToRemove);
         }
 
         private void buttonPostTime_Click(object sender, EventArgs e)
@@ -134,7 +139,7 @@ namespace C16_Ex03_Michael_305597478_Shai_300518495
             {
                 if (textToPost != string.Empty)
                 {
-                    Poster taskToAdd = TaskFactory.CreatePoster(new Action<string>(postStatusWithoutReturnParameter), dateTimePickerAction.Value, textToPost);
+                    Poster taskToAdd = TaskFactory.CreatePoster(new Services.ActionReturnStatus<string>(postStatusAdapter),new Action<Status>(removeStatusWithoutReturnParameter), dateTimePickerAction.Value, textToPost);
                     setListBoxesBackColor(Color.HotPink);
                     addObjectToListBoxAsynchronous(listBoxPending, taskToAdd);
                 }
@@ -226,7 +231,7 @@ namespace C16_Ex03_Michael_305597478_Shai_300518495
                 if (isReadyToComment())
                 {
                     Post handledPost = (this.listBoxPosts.SelectedItem as PostWrapper).Post;
-                    Task taskToAdd = TaskFactory.CreateCommenterByNums(this.textBoxPrepareTextToSubmit.Text, handledPost, (int)this.numericUpDownCommentAtLikes.Value, (int)this.numericUpDownCommentAtComments.Value, this.radioButtonCommentAnd.Checked);
+                    Task taskToAdd = TaskFactory.CreateCommenterByNums(this.textBoxPrepareTextToSubmit.Text, ref handledPost, (int)this.numericUpDownCommentAtLikes.Value, (int)this.numericUpDownCommentAtComments.Value, this.radioButtonCommentAnd.Checked);
                     setListBoxesBackColor(Color.HotPink);
                     addObjectToListBoxAsynchronous(listBoxPending, taskToAdd);
                 }
@@ -289,6 +294,18 @@ namespace C16_Ex03_Michael_305597478_Shai_300518495
         {
             bool isEmpty = listBoxPending.Items.Count == 0 ? true : false;
             return isEmpty;
+        }
+
+        private void UndoButton_Click(object sender, EventArgs e)
+        {
+            undoAction();
+        }
+
+        private void undoAction()
+        {
+            object taskToUndo = listBoxDone.SelectedItem as Task;
+            (taskToUndo as Task).UnExecute();
+            removeItemFromListBoxAsynchronous(listBoxDone, taskToUndo);
         }
     }
 }

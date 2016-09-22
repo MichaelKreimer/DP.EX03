@@ -37,7 +37,6 @@ namespace C16_Ex03_Michael_305597478_Shai_300518495
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormFacebookConditionally));
             this.dateTimePickerAction = new System.Windows.Forms.DateTimePicker();
             this.listBoxPosts = new System.Windows.Forms.ListBox();
-            this.listBoxPending = new ListBoxProxy();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.buttonPostTime = new System.Windows.Forms.Button();
@@ -78,6 +77,8 @@ namespace C16_Ex03_Michael_305597478_Shai_300518495
             this.buttonUnlikeTime = new System.Windows.Forms.Button();
             this.groupBoxNumOf = new System.Windows.Forms.GroupBox();
             this.groupBoxTime = new System.Windows.Forms.GroupBox();
+            this.listBoxPending = new C16_Ex03_Michael_305597478_Shai_300518495.ListBoxProxy();
+            this.UndoButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLikeAtLikes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLikeAtComments)).BeginInit();
             this.panel1.SuspendLayout();
@@ -108,15 +109,6 @@ namespace C16_Ex03_Michael_305597478_Shai_300518495
             this.listBoxPosts.Name = "listBoxPosts";
             this.listBoxPosts.Size = new System.Drawing.Size(335, 186);
             this.listBoxPosts.TabIndex = 1;
-            // 
-            // listBoxPending
-            // 
-            this.listBoxPending.FormattingEnabled = true;
-            this.listBoxPending.Location = new System.Drawing.Point(371, 26);
-            this.listBoxPending.Margin = new System.Windows.Forms.Padding(2);
-            this.listBoxPending.Name = "listBoxPending";
-            this.listBoxPending.Size = new System.Drawing.Size(335, 186);
-            this.listBoxPending.TabIndex = 2;
             // 
             // label1
             // 
@@ -551,11 +543,31 @@ namespace C16_Ex03_Michael_305597478_Shai_300518495
             this.groupBoxTime.TabStop = false;
             this.groupBoxTime.Text = "Time condition";
             // 
+            // listBoxPending
+            // 
+            this.listBoxPending.FormattingEnabled = true;
+            this.listBoxPending.Location = new System.Drawing.Point(371, 26);
+            this.listBoxPending.Margin = new System.Windows.Forms.Padding(2);
+            this.listBoxPending.Name = "listBoxPending";
+            this.listBoxPending.Size = new System.Drawing.Size(335, 186);
+            this.listBoxPending.TabIndex = 2;
+            // 
+            // UndoButton
+            // 
+            this.UndoButton.Location = new System.Drawing.Point(625, 448);
+            this.UndoButton.Name = "UndoButton";
+            this.UndoButton.Size = new System.Drawing.Size(75, 23);
+            this.UndoButton.TabIndex = 40;
+            this.UndoButton.Text = "Undo";
+            this.UndoButton.UseVisualStyleBackColor = true;
+            this.UndoButton.Click += new System.EventHandler(this.UndoButton_Click);
+            // 
             // FormFacebookConditionally
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(712, 627);
+            this.Controls.Add(this.UndoButton);
             this.Controls.Add(this.groupBoxTime);
             this.Controls.Add(this.groupBoxNumOf);
             this.Controls.Add(this.label13);
@@ -640,5 +652,6 @@ namespace C16_Ex03_Michael_305597478_Shai_300518495
         private System.Windows.Forms.GroupBox groupBoxNumOf;
         private System.Windows.Forms.GroupBox groupBoxTime;
         private List<System.Windows.Forms.ListBox> listBoxes = new List<System.Windows.Forms.ListBox>();
+        private System.Windows.Forms.Button UndoButton;
     }
 }

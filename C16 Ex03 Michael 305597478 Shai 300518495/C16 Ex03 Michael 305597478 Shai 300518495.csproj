@@ -68,7 +68,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ICommand.cs" />
-    <Compile Include="IReceiver.cs" />
     <Compile Include="ITaskFactory.cs" />
     <Compile Include="Commenter.cs" />
     <Compile Include="CommenterByNums.cs" />

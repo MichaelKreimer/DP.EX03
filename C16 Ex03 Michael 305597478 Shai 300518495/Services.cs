@@ -9,6 +9,7 @@ namespace C16_Ex03_Michael_305597478_Shai_300518495
 {
     public class Services
     {
+        public delegate Status ActionReturnStatus<T>(T i_Param);
         public static bool IsEnoughLikesComments(Post post, int numOfRequiredLikes, int numOfRequiredComments, bool isAndOperation)
         {
             if (isAndOperation == true)
